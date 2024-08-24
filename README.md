@@ -31,13 +31,39 @@ This project has various branches to investigate different streaming approaches:
 
 - The default branch `master` streams base64 encoded image contents. This works very fast and has very little delay.
 - The `binary-image-transfer` branch streams binary image content (uint8Array). Slightly less data to transfer but adds some delay.
-- The `video-jmux` branch streams H264 encoded video stream to a video tag (also as uint8Array) using [jmuxer](https://github.com/samirkumardas/jmuxer). Image transitions are very smooth but this also adds some delay. 
+- The `video-jmux` branch streams H264 encoded video stream to a video tag (also as uint8Array) using [jmuxer](https://github.com/samirkumardas/jmuxer). Image transitions are very smooth but this also adds some delay.
 
 ## Dependencies and Installation
 
+_Run `make help` to view all commands._
+
 ### Docker
 
-The easies way to run webg3n is to `build` and `run` a container using the supplied Dockerfile.
+The easies way to run webg3n is to run as a docker container using following commands:
+1. Build image: `make build`
+2. Run container: `make run`
+
+### Minikube
+1. Start Minikube:
+    ```bash
+    # minikube starts with 2 CPU cores by default which may not be enough for this service which can be customized by setting CPU cores or set it to max i.e. '--cpus=max'
+    minikube start --cpus 6
+
+2. Build image:
+    ```bash
+    make minikube.build
+    ```
+
+3. Deploy service from definition files inside `k8` folder:
+    ```bash
+    make minikube.deploy
+    ```
+
+4. Get public service URL for testing
+    ```bash
+    $ make minikube.url
+    http://127.0.0.1:54330
+    ```
 
 ### Not using Docker?
 
