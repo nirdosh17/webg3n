@@ -1,6 +1,6 @@
 .DEFAULT_GOAL=help
 
-GO_VERSION?=1.14
+GO_VERSION?=1.22.0
 
 build: ## build docker image
 	docker build \

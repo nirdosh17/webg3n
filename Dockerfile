@@ -14,7 +14,7 @@ RUN apt-get install -y xorg-dev libgl1-mesa-dev libopenal1 libopenal-dev libvorb
 RUN apt-get install -y libjpeg-turbo8 libjpeg-turbo8-dev
 RUN apt-get install -y xvfb wget tar gcc
 
-ARG GO_VERSION=1.14
+ARG GO_VERSION=1.22.0
 ARG GO_ARCH=linux-amd64
 WORKDIR /usr/local
 RUN wget -q -o /dev/null https://dl.google.com/go/go${GO_VERSION}.${GO_ARCH}.tar.gz
