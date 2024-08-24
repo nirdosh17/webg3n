@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webg3n-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webg3n-app
+  template: # pod
+    metadata:
+      name: webg3n-pod
+      labels:
+        name: webg3n-pod
+        app: webg3n-app
+    spec:
+      containers:
+      - name: webg3n-service
+        image: local/webg3n
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: APP_PORT
+            value: "8000"
+        ports:
+          - containerPort: 8000
+        # resources:
+        #   limits:
+        #     memory: "4Gi"
+        #     cpu: "6000m" # = 6 cpu core
